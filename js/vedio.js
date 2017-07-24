@@ -2,6 +2,8 @@
     function queryString(key) {
         return (document.location.search.match(new RegExp("(?:^\\?|&)" + key + "=(.*?)(?=&|$)")) || ['', null])[1];
     }
+
+    var ResultSplitChar = "\u00ea\u00ea\u00ea";
     var data = {
         allnav: {
             menu_cs: {
@@ -69,8 +71,10 @@
         nav_content: [],
         content: [],
         ul: [],
+        help_all: [],
         selected: '_cn',
-        selectedimg: 'images/c01.png',
+        selectedimg: '',
+        key: '',
         option: [{
             text: '简体中文',
             img: 'images/c01.png',
@@ -102,7 +106,25 @@
         },
         created: function() {
             this.init();
+            var self = this
+            $.ajax({
+                type: "get",
+                url: 'template.html?v0717',
+                dataType: "text",
+                data: "",
+                timeout: 6E4,
+                cache: !0,
+                async: false,
+                success: function(a) {
+                    self.help_all = a.split(ResultSplitChar);
+                    self.ul = JSON.parse(self.help_all[0].toString());
+                    self.$nextTick(function() {
+                        self.setContent()
+                    })
 
+
+                }
+            });
         },
         methods: {
 
@@ -132,6 +154,13 @@
                             self.selected = "_cn"
                             break;
                     }
+                }
+                for (var i = 0; i < self.option.length; i++) {
+                    if (self.option[i].value == self.selected) {
+                        self.selectedimg = self.option[i].img
+
+                    }
+
                 }
                 self.changeNav();
             },
@@ -167,9 +196,56 @@
                         self.nav_content = self.allnav.menu_cs
                         break
                 }
-                console.log(self.nav_content);
+                this.putContent(self.key);
 
+            },
+            setContent: function() {
+                var self = this;
+                self.key = 'index';
+                if (queryString('type')) {
+                    var type = queryString('type');
 
+                    switch (type) {
+                        case '1':
+                            self.key = 'baccarat';
+                            break;
+                        case '2':
+                            self.key = 'dragonTiger';
+                            break;
+                        case '3':
+                            self.key = 'sicbo';
+                            break;
+                        case '4':
+                            self.key = 'roulette';
+                            break;
+                        case '5':
+                            self.key = 'bullbull';
+                            break;
+                        case '1001':
+                            self.key = 'baccarat-more';
+                            break;
+                        case '2001':
+                            self.key = 'baccarat-insurance';
+                            break;
+                        case '3001':
+                            self.key = 'baccarat-bid';
+                            break;
+                        case '8001':
+                            self.key = 'baccarat-color';
+                            break;
+                        default:
+                            self.key = 'index';
+                    }
+
+                }
+                this.putContent(self.key);
+
+            },
+            putContent: function(key) {
+                var self = this;
+                self.key = key;
+                self.content = self.selected == '_cn' ? self.help_all[self.ul[key]] : self.help_all[self.ul[key + self.selected]];
+                $('#replace').html(self.content);
 
             }
         }

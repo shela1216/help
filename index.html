@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="mobile_list">
-                <a href="#" data-gamebtn="index">{{nav_content.rule}}</a>
+                <a href="#">{{nav_content.rule}}</a>
                 <div class="mobile_list_btn">
                     <span></span>
                     <span></span>
@@ -39,29 +39,29 @@
                 <div class="leftUl">
                     <div class="game_list">
                         <ul class="game_item">
-                            <li id="index">
-                                <a href="#" data-gamebtn="index">{{nav_content.rule}}</a>
+                            <li id="index" :class="{'selected':key=='index'}">
+                                <a href="#" @click="putContent('index')">{{nav_content.rule}}</a>
                             </li>
                             <li>
-                                <a href="#" id="bac01">{{nav_content.baccarat}}</a>
+                                <a href="#" id="bac01" class="drop" @click="putContent('baccarat')">{{nav_content.baccarat}}</a>
                                 <ul>
-                                    <li id="baccarat"> <a href="#" data-gamebtn="baccarat-normal">{{nav_content['baccarat-normal']}}</a></li>
-                                    <li id="baccarat-insurance"> <a href="#" data-gamebtn="baccarat-insurance">{{nav_content['baccarat-insurance']}}</a></li>
-                                    <li id="baccarat-bid"> <a href="#" data-gamebtn="baccarat-bid">{{nav_content['baccarat-bid']}}</a></li>
-                                    <li id="baccarat-color"> <a href="#" data-gamebtn="baccarat-color">{{nav_content['baccarat-color']}}</a></li>
+                                    <li id="baccarat" :class="{'selected':key=='baccarat'}"> <a href="#" @click="putContent('baccarat')">{{nav_content['baccarat-normal']}}</a></li>
+                                    <li id="baccarat-insurance" :class="{'selected':key=='baccarat-insurance'}"> <a href="#" @click="putContent('baccarat-insurance')">{{nav_content['baccarat-insurance']}}</a></li>
+                                    <li id="baccarat-bid" :class="{'selected':key=='baccarat-bid'}"> <a href="#" @click="putContent('baccarat-bid')">{{nav_content['baccarat-bid']}}</a></li>
+                                    <li id="baccarat-color" :class="{'selected':key=='baccarat-color'}"> <a href="#" @click="putContent('baccarat-color')">{{nav_content['baccarat-color']}}</a></li>
                                 </ul>
                             </li>
-                            <li id="dragonTiger">
-                                <a href="#" id="dragon" data-gamebtn="dragonTiger">{{nav_content['dragonTiger']}}</a>
+                            <li id="dragonTiger" :class="{'selected':key=='dragonTiger'}">
+                                <a href="#" id="dragon" @click="putContent('dragonTiger')">{{nav_content['dragonTiger']}}</a>
                             </li>
-                            <li id="sicbo">
-                                <a href="#" id="sic" data-gamebtn="sicbo">{{nav_content['sicbo']}}</a>
+                            <li id="sicbo" :class="{'selected':key=='sicbo'}">
+                                <a href="#" id="sic" @click="putContent('sicbo')">{{nav_content['sicbo']}}</a>
                             </li>
-                            <li id="roulette">
-                                <a href="#" id="rou" data-gamebtn="roulette">{{nav_content['roulette']}}</a>
+                            <li id="roulette" :class="{'selected':key=='roulette'}">
+                                <a href="#" id="rou" @click="putContent('roulette')">{{nav_content['roulette']}}</a>
                             </li>
-                            <li id="bullbull">
-                                <a href="#" id="bull" data-gamebtn="bullbull">{{nav_content['bullbull']}}</a>
+                            <li id="bullbull" :class="{'selected':key=='bullbull'}">
+                                <a href="#" id="bull" @click="putContent('bullbull')">{{nav_content['bullbull']}}</a>
                             </li>
                         </ul>
                     </div>
@@ -69,6 +69,7 @@
             </div>
         </div>
         <div id="replace" class="main-right minH">
+
         </div>
     </div>
     <script src="js/jquery.min-1.9.1.js"></script>
