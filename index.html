@@ -21,7 +21,7 @@
             <div class="main_title">
                 <a class="logo"><img src="images/logo.png" class="left-logo"></a>
                 <div class="select_leng">
-                    <select id="leng" class="soflow-color" v-model="selected" @change="changeLange" :style="{ backgroundImage: 'url(' + selectedimg + ')' }">
+                    <select id="leng" class="soflow-color" @change="changeNav" v-model="selected" :style="{ backgroundImage: 'url(' + imgChange + ')' }">
                         <option value="" v-for="item in option" :value="item.value">{{item.text}}</option>
 
                     </select>

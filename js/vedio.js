@@ -73,8 +73,7 @@
         ul: [],
         help_all: [],
         selected: '_cn',
-        selectedimg: '',
-        key: '',
+        key: 'index',
         option: [{
             text: '简体中文',
             img: 'images/c01.png',
@@ -101,8 +100,16 @@
         el: '.main',
         data: data,
         computed: {
+            imgChange: function() {
+                var self = this
+                for (var i = 0; i < self.option.length; i++) {
+                    if (self.option[i].value == self.selected) {
+                        return self.option[i].img
 
+                    }
 
+                }
+            }
         },
         created: function() {
             this.init();
@@ -118,9 +125,8 @@
                 success: function(a) {
                     self.help_all = a.split(ResultSplitChar);
                     self.ul = JSON.parse(self.help_all[0].toString());
-                    self.$nextTick(function() {
-                        self.setContent()
-                    })
+                    self.setContent()
+
 
 
                 }
@@ -154,27 +160,10 @@
                             break;
                     }
                 }
-                for (var i = 0; i < self.option.length; i++) {
-                    if (self.option[i].value == self.selected) {
-                        self.selectedimg = self.option[i].img
 
-                    }
-
-                }
                 self.changeNav();
             },
-            changeLange: function() {
-                var self = this
-                for (var i = 0; i < self.option.length; i++) {
-                    if (self.option[i].value == self.selected) {
-                        self.selectedimg = self.option[i].img
 
-                    }
-
-                }
-                self.changeNav();
-
-            },
             changeNav: function() {
                 var self = this;
                 switch (self.selected) {
@@ -200,7 +189,6 @@
             },
             setContent: function() {
                 var self = this;
-                self.key = 'index';
                 if (queryString('type')) {
                     var type = queryString('type');
 
