@@ -1,0 +1,35 @@
+@-webkit-keyframes ArrowMove {
+    0% {
+        -webkit-transform: translateX(0px);
+    }
+    100% {
+        -webkit-transform: translate(-50px);
+    }
+}
+
+@-moz-keyframes ArrowMove {
+    0% {
+        -moz-transform: translateX(0px);
+    }
+    100% {
+        -moz-transform: translate(-50px);
+    }
+}
+
+@-o-keyframes ArrowMove {
+    0% {
+        -o-transform: translateX(0px);
+    }
+    100% {
+        -o-transform: translate(-50px);
+    }
+}
+
+@keyframes ArrowMove {
+    0% {
+        transform: translateX(0px);
+    }
+    100% {
+        transform: translate(-50px);
+    }
+}

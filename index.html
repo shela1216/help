@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>游戏规则首頁</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="css/style.css?v0707" rel="stylesheet">
+</head>
+
+<body>
+    <div class="main">
+        <div class="main_top">
+            <div class="main_title">
+                <a class="logo" onclick="core.setLayout('index')"><img src="images/logo.png" class="left-logo"></a>
+                <div class="select_leng">
+                    <select id="leng" class="soflow-color" onchange="core.changeLeng()">
+                        <option value="">简体中文</option>
+                        <option value="_tc">繁體中文</option>
+                        <option value="_en">English</option>
+                        <option value="_id">Indonesia</option>
+                        <option value="_ms">Malay</option>
+                    </select>
+                </div>
+            </div>
+            <div class="mobile_list">
+                <a href="#" onclick="core.setLayout('index')" data-gamebtn="index">遊戲規則</a>
+                <div class="mobile_list_btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div class="main-left">
+                <div class="leftUl">
+                    <div class="game_list">
+                        <ul class="game_item">
+                            <li id="index">
+                                <a href="#" data-gamebtn="index" onclick="core.setLayout('index')">遊戲規則</a>
+                            </li>
+                            <li>
+                                <a href="#" id="bac01" onclick="core.setLayout('baccarat')" data-gamebtn="baccarat" class="drop">百家乐</a>
+                                <ul>
+                                    <li id="baccarat"> <a href="#" data-gamebtn="baccarat-normal" onclick="core.setLayout('baccarat')">傳統百家樂</a></li>
+                                    <li id="baccarat-insurance"> <a href="#" data-gamebtn="baccarat-insurance" onclick="core.setLayout('baccarat-insurance')">保險百家樂</a></li>
+                                    <li id="baccarat-bid"> <a href="#" data-gamebtn="baccarat-bid" onclick="core.setLayout('baccarat-bid')">共咪百家樂</a></li>
+                                    <li id="baccarat-color"> <a href="#" data-gamebtn="baccarat-color" onclick="core.setLayout('baccarat-color')">多彩百家樂</a></li>
+                                </ul>
+                            </li>
+                            <li id="dragonTiger">
+                                <a href="#" id="dragon" data-gamebtn="dragonTiger" onclick="core.setLayout('dragonTiger')">龙虎</a>
+                            </li>
+                            <li id="sicbo">
+                                <a href="#" id="sic" data-gamebtn="sicbo" onclick="core.setLayout('sicbo')">骰宝</a>
+                            </li>
+                            <li id="roulette">
+                                <a href="#" id="rou" data-gamebtn="roulette" onclick="core.setLayout('roulette')">轮盘</a>
+                            </li>
+                            <li id="bullbull">
+                                <a href="#" id="bull" data-gamebtn="bullbull" onclick="core.setLayout('bullbull')">牛牛</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="replace" class="main-right minH">
+        </div>
+    </div>
+    <script src="js/jquery.min-1.9.1.js"></script>
+    <script src="js/vedio.js?v0717"></script>
+    <script type="text/javascript">
+        $.getUrlParam = function(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+
+        $(function() {
+            core.init();
+
+            $('.mobile_list_btn').on("click touch", function(e) {
+                e.preventDefault();
+
+                $(".game_list").slideToggle(200);
+                $(this).toggleClass('open');
+
+            });
+
+            $(document).ready(sizeContent);
+            $(window).resize(sizeContent);
+
+            var custom = $.getUrlParam('customCss') ? $.getUrlParam('customCss') : "";
+            if (custom && custom.length == 4) {
+                $('.left-logo').attr('src', custom + '/logo.png');
+            } else {
+                $('.left-logo').attr('src', 'images/logo.png');
+            }
+
+        })
+    </script>
+</body>
+
+</html>
