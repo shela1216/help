@@ -1,186 +1,178 @@
-var UT = {};
-var CL = {};
-var TplRoutobj;
-var ResultSplitChar = "\u00ea\u00ea\u00ea";
-var page = '';
-var exception = ['index'];
-var menu_cs = { 'rule': '游戏规则', 'baccarat': '百家乐', 'baccarat-normal': '传统百家乐', 'baccarat-insurance': '保险百家乐', 'baccarat-bid': '共咪百家乐', 'baccarat-color': '多彩百家乐', 'dragonTiger': '龙虎', 'sicbo': '骰宝', 'roulette': '轮盘', 'bullbull': '牛牛' };
-var menu_tc = { 'rule': '遊戲規則', 'baccarat': '百家樂', 'baccarat-normal': '傳統百家樂', 'baccarat-insurance': '保險百家樂', 'baccarat-color': '多彩百家樂', 'baccarat-bid': '共咪百家樂', 'dragonTiger': '龍虎', 'sicbo': '骰寶', 'roulette': '輪盤', 'bullbull': '牛牛' };
-var menu_en = { 'rule': 'Game Rules', 'baccarat': 'Baccarat', 'baccarat-normal': 'Classic Baccarat', 'baccarat-insurance': 'Insurance Baccarat', 'baccarat-bid': 'MI Baccarat', 'baccarat-color': 'Multicolor Baccarat', 'dragonTiger': 'DragonTiger', 'sicbo': 'Sicbo', 'roulette': 'Roulette', 'bullbull': 'Bull Bull' };
-var menu_id = { 'rule': 'Aturan', 'baccarat': 'Baccarat', 'baccarat-normal': 'Klasik Baccarat', 'baccarat-insurance': 'Baccarat Asuransi', 'baccarat-bid': 'MI Baccarat', 'baccarat-color': 'beraneka warna Baccarat', 'dragonTiger': 'DragonTiger', 'sicbo': 'Sicbo', 'roulette': 'Roulette', 'bullbull': 'Bull Bull' };
-var menu_ms = { 'rule': 'Peraturan', 'baccarat': 'Baccarat', 'baccarat-normal': 'Klasik Baccarat', 'baccarat-insurance': 'Baccarat Asuransi', 'baccarat-bid': 'MI Baccarat', 'baccarat-color': 'beraneka warna Baccarat', 'dragonTiger': 'DragonTiger', 'sicbo': 'Sicbo', 'roulette': 'Roulette', 'bullbull': 'Bull Bull' };
-var menu = menu_cs;
-var core = {
-    init: function() {
-        core.urlLayout();
-    },
-    queryString: function(key) {
+(function(window) {
+    function queryString(key) {
         return (document.location.search.match(new RegExp("(?:^\\?|&)" + key + "=(.*?)(?=&|$)")) || ['', null])[1];
-    },
-    ajax_template: function() {
-        $.ajax({
-            type: "get",
-            url: 'template.html?v0717',
-            dataType: "text",
-            data: "",
-            timeout: 6E4,
-            cache: !0,
-            async: false,
-            success: function(a) {
-                UT = a.split(ResultSplitChar);
-                TplRoutobj = $.parseJSON(UT[0].toString());
-            }
-        });
-    },
-    setLayout: function(id) {
-
-        $('*[data-gamebtn="index"]').text(menu['rule']);
-        $('*[data-gamebtn="baccarat"]').text(menu['baccarat']);
-        $('*[data-gamebtn="baccarat-normal"]').text(menu['baccarat-normal']);
-        $('*[data-gamebtn="baccarat-insurance"]').text(menu['baccarat-insurance']);
-        $('*[data-gamebtn="baccarat-color"]').text(menu['baccarat-color']);
-        $('*[data-gamebtn="baccarat-bid"]').text(menu['baccarat-bid']);
-        $('*[data-gamebtn="dragonTiger"]').text(menu['dragonTiger']);
-        $('*[data-gamebtn="bullbull"]').text(menu['bullbull']);
-        $('*[data-gamebtn="sicbo"]').text(menu['sicbo']);
-        $('*[data-gamebtn="roulette"]').text(menu['roulette']);
-        $('.leftUl li.selected').removeClass();
-        $('#' + id).addClass('selected');
-        var wrapWidth = $(window).width();
-        if (wrapWidth < 980) {
-
-            $(".game_list").fadeOut(200);
-            if ($(".mobile_list_btn").hasClass('open')) {
-                $(".mobile_list_btn").removeClass('open');
-            }
-        }
-
-        page = id;
-        if ($.inArray(id) == -1)
-            $('#replace').html(UT[TplRoutobj[id + $('#leng').val()]]);
-        else
-            $('#replace').html(UT[TplRoutobj[id]]);
-    },
-    urlLayout: function() {
-        var key = 'index';
-        var locale = core.queryString('locale');
-
-        switch (locale) {
-
-            case 'zh_TW':
-                menu = menu_tc;
-                $('#leng').val('_tc');
-                $("#leng").css("background-image", "url(images/c02.png)");
-                break;
-            case 'en_US':
-                menu = menu_en;
-                $('#leng').val('_en');
-                $("#leng").css("background-image", "url(images/c03.png)");
-                break;
-            case 'id_ID':
-                menu = menu_id;
-                $('#leng').val('_id');
-                $("#leng").css("background-image", "url(images/c04.png)");
-                break;
-            case 'ms_MY':
-                menu = menu_ms;
-                $('#leng').val('_ms');
-                $("#leng").css("background-image", "url(images/c05.png)");
-                break;
-            case 'ko_KR':
-            case 'th_TH':
-            case 'vi_VN':
-            case 'zh_CN':
-            default:
-                menu = menu_cs;
-                $('#leng').val('');
-                $("#leng").css("background-image", "url(images/c01.png)");
-                break;
-        }
-        switch (core.queryString('type')) {
-            case '1':
-                key = 'baccarat';
-                break;
-            case '2':
-                key = 'dragonTiger';
-                break;
-            case '3':
-                key = 'sicbo';
-                break;
-            case '4':
-                key = 'roulette';
-                break;
-            case '5':
-                key = 'bullbull';
-                break;
-            case '1001':
-                key = 'baccarat-more';
-                break;
-            case '2001':
-                key = 'baccarat-insurance';
-                break;
-            case '3001':
-                key = 'baccarat-bid';
-                break;
-            case '8001':
-                key = 'baccarat-color';
-                break;
-            default:
-                key = 'index';
-        }
-        core.setLayout(key);
-    },
-    changeLeng: function() {
-        switch ($('#leng').val()) {
-            case '_tc':
-                menu = menu_tc;
-                $("#leng").css("background-image", "url(images/c02.png)");
-
-                break;
-            case '_en':
-                menu = menu_en;
-                $("#leng").css("background-image", "url(images/c03.png)");
-                break;
-            case '_id':
-                menu = menu_id;
-                $("#leng").css("background-image", "url(images/c04.png)");
-                break;
-            case '_ms':
-                menu = menu_ms;
-                $("#leng").css("background-image", "url(images/c05.png)");
-                break;
-            default:
-                menu = menu_cs;
-                $("#leng").css("background-image", "url(images/c01.png)");
-                break;
-        }
-        if (page) {
-            core.setLayout(page);
-        }
-        $('#leng').blur();
     }
-}
-core.ajax_template();
+    var data = {
+        allnav: {
+            menu_cs: {
+                'rule': '游戏规则',
+                'baccarat': '百家乐',
+                'baccarat-normal': '传统百家乐',
+                'baccarat-insurance': '保险百家乐',
+                'baccarat-bid': '共咪百家乐',
+                'baccarat-color': '多彩百家乐',
+                'dragonTiger': '龙虎',
+                'sicbo': '骰宝',
+                'roulette': '轮盘',
+                'bullbull': '牛牛'
+            },
+            menu_tc: {
+                'rule': '遊戲規則',
+                'baccarat': '百家樂',
+                'baccarat-normal': '傳統百家樂',
+                'baccarat-insurance': '保險百家樂',
+                'baccarat-color': '多彩百家樂',
+                'baccarat-bid': '共咪百家樂',
+                'dragonTiger': '龍虎',
+                'sicbo': '骰寶',
+                'roulette': '輪盤',
+                'bullbull': '牛牛'
+            },
+            menu_en: {
+                'rule': 'Game Rules',
+                'baccarat': 'Baccarat',
+                'baccarat-normal': 'Classic Baccarat',
+                'baccarat-insurance': 'Insurance Baccarat',
+                'baccarat-bid': 'MI Baccarat',
+                'baccarat-color': 'Multicolor Baccarat',
+                'dragonTiger': 'DragonTiger',
+                'sicbo': 'Sicbo',
+                'roulette': 'Roulette',
+                'bullbull': 'Bull Bull'
+            },
+            menu_id: {
+                'rule': 'Aturan',
+                'baccarat': 'Baccarat',
+                'baccarat-normal': 'Klasik Baccarat',
+                'baccarat-insurance': 'Baccarat Asuransi',
+                'baccarat-bid': 'MI Baccarat',
+                'baccarat-color': 'beraneka warna Baccarat',
+                'dragonTiger': 'DragonTiger',
+                'sicbo': 'Sicbo',
+                'roulette': 'Roulette',
+                'bullbull': 'Bull Bull'
+            },
+            menu_ms: {
+                'rule': 'Peraturan',
+                'baccarat': 'Baccarat',
+                'baccarat-normal': 'Klasik Baccarat',
+                'baccarat-insurance': 'Baccarat Asuransi',
+                'baccarat-bid': 'MI Baccarat',
+                'baccarat-color': 'beraneka warna Baccarat',
+                'dragonTiger': 'DragonTiger',
+                'sicbo': 'Sicbo',
+                'roulette': 'Roulette',
+                'bullbull': 'Bull Bull'
+            }
+
+        },
+        nav_content: [],
+        content: [],
+        ul: [],
+        selected: '_cn',
+        selectedimg: 'images/c01.png',
+        option: [{
+            text: '简体中文',
+            img: 'images/c01.png',
+            value: '_cn'
+        }, {
+            text: '繁體中文',
+            img: 'images/c02.png',
+            value: '_tc'
+        }, {
+            text: 'English',
+            img: 'images/c03.png',
+            value: '_en'
+        }, {
+            text: 'Indonesia',
+            img: 'images/c04.png',
+            value: '_id'
+        }, {
+            text: 'Malay',
+            img: 'images/c05.png',
+            value: '_ms'
+        }]
+    }
+    var vm = new Vue({
+        el: '.main',
+        data: data,
+        computed: {
+
+
+        },
+        created: function() {
+            this.init();
+
+        },
+        methods: {
+
+            init: function() {
+                var self = this;
+                if (queryString('locale')) {
+                    var locale = queryString('locale');
+
+                    switch (locale) {
+                        case 'zh_TW':
+                            self.selected = "_tc"
+                            break;
+                        case 'en_US':
+                            self.selected = "_en"
+                            break;
+                        case 'id_ID':
+                            self.selected = "_id"
+                            break;
+                        case 'ms_MY':
+                            self.selected = "_ms"
+                            break;
+                        case 'ko_KR':
+                        case 'th_TH':
+                        case 'vi_VN':
+                        case 'zh_CN':
+                        default:
+                            self.selected = "_cn"
+                            break;
+                    }
+                }
+                self.changeNav();
+            },
+            changeLange: function() {
+                var self = this
+                for (var i = 0; i < self.option.length; i++) {
+                    if (self.option[i].value == self.selected) {
+                        self.selectedimg = self.option[i].img
+
+                    }
+
+                }
+                self.changeNav();
+
+            },
+            changeNav: function() {
+                var self = this;
+                switch (self.selected) {
+                    case '_tc':
+                        self.nav_content = self.allnav.menu_tc
+                        break
+                    case '_en':
+                        self.nav_content = self.allnav.menu_en
+                        break
+                    case '_id':
+                        self.nav_content = self.allnav.menu_id
+                        break
+                    case '_ms':
+                        self.nav_content = self.allnav.menu_ms
+                        break
+                    case '_cn':
+                    default:
+                        self.nav_content = self.allnav.menu_cs
+                        break
+                }
+                console.log(self.nav_content);
 
 
 
-function sizeContent() {
-    var wrapHeight = $(window).height() - $(".main_title").height() - $(".mobile_list").height();
-    var wrapWidth = $(window).width();
-    var wrapHeight2 = $(window).height() - $(".main_title").height();
-
-    $(".minH").css("min-height", wrapHeight2);
-
-    if (wrapWidth > 980) {
-        $(".game_list").show();
-    } else {
-        $(".game_list").hide();
-        $(".game_list").height(wrapHeight);
-        if ($(".mobile_list_btn").hasClass('open')) {
-            $(".mobile_list_btn").removeClass('open');
+            }
         }
 
-    }
-
-
-}
+    });
+})(window);
