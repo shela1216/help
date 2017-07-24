@@ -127,7 +127,6 @@
             });
         },
         methods: {
-
             init: function() {
                 var self = this;
                 if (queryString('locale')) {
@@ -245,7 +244,6 @@
                 var self = this;
                 self.key = key;
                 self.content = self.selected == '_cn' ? self.help_all[self.ul[key]] : self.help_all[self.ul[key + self.selected]];
-                $('#replace').html(self.content);
 
             }
         }
