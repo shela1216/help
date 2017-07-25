@@ -184,7 +184,7 @@
                         self.nav_content = self.allnav.menu_cs
                         break
                 }
-                this.putContent(self.key);
+                this.putContent();
 
             },
             setContent: function() {
@@ -225,13 +225,17 @@
                     }
 
                 }
-                this.putContent(self.key);
+                this.putContent();
 
             },
-            putContent: function(key) {
+            setKey: function(key) {
+                this.key = key;
+                this.putContent();
+
+            },
+            putContent: function() {
                 var self = this;
-                self.key = key;
-                self.content = self.selected == '_cn' ? self.help_all[self.ul[key]] : self.help_all[self.ul[key + self.selected]];
+                self.content = self.selected == '_cn' ? self.help_all[self.ul[self.key]] : self.help_all[self.ul[self.key + self.selected]];
 
             }
         }

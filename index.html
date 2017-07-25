@@ -40,28 +40,28 @@
                     <div class="game_list">
                         <ul class="game_item">
                             <li id="index" :class="{'selected':key=='index'}">
-                                <a href="#" @click="putContent('index')">{{nav_content.rule}}</a>
+                                <a href="#" @click="setKey('index')">{{nav_content.rule}}</a>
                             </li>
                             <li>
-                                <a href="#" id="bac01" class="drop" @click="putContent('baccarat')">{{nav_content.baccarat}}</a>
+                                <a href="#" id="bac01" class="drop" @click="setKey('baccarat')">{{nav_content.baccarat}}</a>
                                 <ul>
-                                    <li id="baccarat" :class="{'selected':key=='baccarat'}"> <a href="#" @click="putContent('baccarat')">{{nav_content['baccarat-normal']}}</a></li>
-                                    <li id="baccarat-insurance" :class="{'selected':key=='baccarat-insurance'}"> <a href="#" @click="putContent('baccarat-insurance')">{{nav_content['baccarat-insurance']}}</a></li>
-                                    <li id="baccarat-bid" :class="{'selected':key=='baccarat-bid'}"> <a href="#" @click="putContent('baccarat-bid')">{{nav_content['baccarat-bid']}}</a></li>
-                                    <li id="baccarat-color" :class="{'selected':key=='baccarat-color'}"> <a href="#" @click="putContent('baccarat-color')">{{nav_content['baccarat-color']}}</a></li>
+                                    <li id="baccarat" :class="{'selected':key=='baccarat'}"> <a href="#" @click="setKey('baccarat')">{{nav_content['baccarat-normal']}}</a></li>
+                                    <li id="baccarat-insurance" :class="{'selected':key=='baccarat-insurance'}"> <a href="#" @click="setKey('baccarat-insurance')">{{nav_content['baccarat-insurance']}}</a></li>
+                                    <li id="baccarat-bid" :class="{'selected':key=='baccarat-bid'}"> <a href="#" @click="setKey('baccarat-bid')">{{nav_content['baccarat-bid']}}</a></li>
+                                    <li id="baccarat-color" :class="{'selected':key=='baccarat-color'}"> <a href="#" @click="setKey('baccarat-color')">{{nav_content['baccarat-color']}}</a></li>
                                 </ul>
                             </li>
                             <li id="dragonTiger" :class="{'selected':key=='dragonTiger'}">
-                                <a href="#" id="dragon" @click="putContent('dragonTiger')">{{nav_content['dragonTiger']}}</a>
+                                <a href="#" id="dragon" @click="setKey('dragonTiger')">{{nav_content['dragonTiger']}}</a>
                             </li>
                             <li id="sicbo" :class="{'selected':key=='sicbo'}">
-                                <a href="#" id="sic" @click="putContent('sicbo')">{{nav_content['sicbo']}}</a>
+                                <a href="#" id="sic" @click="setKey('sicbo')">{{nav_content['sicbo']}}</a>
                             </li>
                             <li id="roulette" :class="{'selected':key=='roulette'}">
-                                <a href="#" id="rou" @click="putContent('roulette')">{{nav_content['roulette']}}</a>
+                                <a href="#" id="rou" @click="setKey('roulette')">{{nav_content['roulette']}}</a>
                             </li>
                             <li id="bullbull" :class="{'selected':key=='bullbull'}">
-                                <a href="#" id="bull" @click="putContent('bullbull')">{{nav_content['bullbull']}}</a>
+                                <a href="#" id="bull" @click="setKey('bullbull')">{{nav_content['bullbull']}}</a>
                             </li>
                         </ul>
                     </div>
