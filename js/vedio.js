@@ -258,7 +258,7 @@
             text: 'Malay',
             img: 'images/c05.png',
             value: '_ms'
-        }]
+        }],
     }
     var vm = new Vue({
         el: '.main',
@@ -312,6 +312,13 @@
                         return self.allnav.menu_cs
                         break
                 }
+            },
+            indexOpen: function() {
+                if (this.key == "index") {
+                    return true
+                } else {
+                    return false
+                }
             }
         },
         created: function() {
@@ -328,9 +335,6 @@
                 success: function(a) {
                     self.help_all = a.split(ResultSplitChar);
                     self.ul = JSON.parse(self.help_all[0].toString());
-                    self.setContent()
-
-
 
                 }
             });
@@ -363,12 +367,6 @@
                             break;
                     }
                 }
-
-
-            },
-
-            setContent: function() {
-                var self = this;
                 if (queryString('type')) {
                     var type = queryString('type');
 
@@ -406,9 +404,11 @@
 
                 }
 
+            },
+            setContent: function(index) {
+                this.key = this.nav_content[index].key;
 
             }
-
 
         }
 

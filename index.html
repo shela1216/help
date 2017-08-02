@@ -39,7 +39,7 @@
                     <div class="game_list">
                         <ul class="game_item">
                             <li v-for="(item, index) in nav_content" :id="item.type" :class="{'selected':key==item.type}">
-                                <a href="#" @click="key=item.key" :id="'item'+index" :class="{'drop':item.child.length}">{{item.name}}</a>
+                                <a href="#" @click="setContent(index)" :id="'item'+index" :class="{'drop':item.child.length}">{{item.name}}</a>
                                 <ul v-if="item.child.length">
                                     <li v-for="(child,index) in item.child" :id="child.type" :class="{'selected':key==child.type}">
                                         <a href="#" @click="key=child.type">{{child.name}}</a>
@@ -62,7 +62,6 @@
     <script src="js/vedio.js?v0717"></script>
     <script type="text/javascript">
         $(function() {
-            // core.init();
 
             $('.mobile_list_btn').on("click touch", function(e) {
                 e.preventDefault();
