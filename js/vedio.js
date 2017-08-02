@@ -186,51 +186,7 @@
                     child: []
                 }
             ],
-            menu_id: [{
-                    type: 'index',
-                    name: 'Game Rules',
-                    key: 'index',
-                    child: []
-                }, {
-                    type: 'baccarat',
-                    name: 'Baccarat',
-                    key: 'baccarat-normal',
-                    child: [{
-                        type: 'baccarat-normal',
-                        name: 'Klasik Baccarat'
-                    }, {
-                        type: 'baccarat-insurance',
-                        name: 'Baccarat Asuransi'
-                    }, {
-                        type: 'baccarat-bid',
-                        name: 'MI Baccarat'
-                    }, {
-                        type: 'baccarat-color',
-                        name: 'beraneka warna Baccarat'
-                    }]
-                }, {
-                    type: 'dragonTiger',
-                    name: 'DragonTiger',
-                    key: 'dragonTiger',
-                    child: []
-                },
-                {
-                    type: 'sicbo',
-                    name: 'Sicbo',
-                    key: 'sicbo',
-                    child: []
-                }, {
-                    type: 'roulette',
-                    name: 'Roulette',
-                    key: 'roulette',
-                    child: []
-                }, {
-                    type: 'bullbull',
-                    name: 'Bull Bull',
-                    key: 'bullbull',
-                    child: []
-                }
-            ],
+
             menu_ms: [{
                     type: 'index',
                     name: 'Peraturan',
@@ -278,7 +234,6 @@
             ]
 
         },
-        nav_content: [],
         ul: [],
         help_all: [],
         selected: '_cn',
@@ -328,6 +283,35 @@
                 var content = self.selected == '_cn' ? self.help_all[self.ul[key]] : self.help_all[self.ul[key + self.selected]];
                 return content
 
+            },
+            leftlogo: function() {
+                var custom = queryString('customCss') ? queryString('customCss') : "";
+                if (custom && custom.length == 4) {
+                    return custom + '/logo.png'
+                } else {
+                    return 'images/logo.png'
+                }
+            },
+            nav_content: function() {
+                var self = this;
+                switch (self.selected) {
+                    case '_tc':
+                        return self.allnav.menu_tc
+                        break
+                    case '_en':
+                        return self.allnav.menu_en
+                        break
+                    case '_id':
+                        return self.allnav.menu_id
+                        break
+                    case '_ms':
+                        return self.allnav.menu_ms
+                        break
+                    case '_cn':
+                    default:
+                        return self.allnav.menu_cs
+                        break
+                }
             }
         },
         created: function() {
@@ -380,31 +364,9 @@
                     }
                 }
 
-                self.changeNav();
-            },
-
-            changeNav: function() {
-                var self = this;
-                switch (self.selected) {
-                    case '_tc':
-                        self.nav_content = self.allnav.menu_tc
-                        break
-                    case '_en':
-                        self.nav_content = self.allnav.menu_en
-                        break
-                    case '_id':
-                        self.nav_content = self.allnav.menu_id
-                        break
-                    case '_ms':
-                        self.nav_content = self.allnav.menu_ms
-                        break
-                    case '_cn':
-                    default:
-                        self.nav_content = self.allnav.menu_cs
-                        break
-                }
 
             },
+
             setContent: function() {
                 var self = this;
                 if (queryString('type')) {
@@ -445,12 +407,8 @@
                 }
 
 
-            },
-            setKey: function(key) {
-                this.key = key;
-
-
             }
+
 
         }
 

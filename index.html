@@ -19,11 +19,10 @@
     <div class="main" v-cloak>
         <div class="main_top">
             <div class="main_title">
-                <a class="logo"><img src="images/logo.png" class="left-logo"></a>
+                <a class="logo"><img :src="leftlogo" class="left-logo"></a>
                 <div class="select_leng">
-                    <select id="leng" class="soflow-color" @change="changeNav" v-model="selected" :style="{ backgroundImage: 'url(' + imgChange + ')' }">
+                    <select id="leng" class="soflow-color" v-model="selected" :style="{ backgroundImage: 'url(' + imgChange + ')' }">
                         <option value="" v-for="item in option" :value="item.value">{{item.text}}</option>
-
                     </select>
                 </div>
             </div>
@@ -62,13 +61,6 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.4.2/vue.js'></script>
     <script src="js/vedio.js?v0717"></script>
     <script type="text/javascript">
-        $.getUrlParam = function(name) {
-            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-            var r = window.location.search.substr(1).match(reg);
-            if (r != null) return unescape(r[2]);
-            return null;
-        }
-
         $(function() {
             // core.init();
 
@@ -82,13 +74,6 @@
 
             $(document).ready(sizeContent);
             $(window).resize(sizeContent);
-
-            var custom = $.getUrlParam('customCss') ? $.getUrlParam('customCss') : "";
-            if (custom && custom.length == 4) {
-                $('.left-logo').attr('src', custom + '/logo.png');
-            } else {
-                $('.left-logo').attr('src', 'images/logo.png');
-            }
 
             function sizeContent() {
                 var wrapHeight = $(window).height() - $(".main_title").height() - $(".mobile_list").height();
