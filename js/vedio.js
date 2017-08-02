@@ -404,10 +404,6 @@
 
                 }
 
-            },
-            setContent: function(index) {
-                this.key = this.nav_content[index].key;
-
             }
 
         }
