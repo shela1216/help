@@ -39,30 +39,16 @@
                 <div class="leftUl">
                     <div class="game_list">
                         <ul class="game_item">
-                            <li id="index" :class="{'selected':key=='index'}">
-                                <a href="#" @click="setKey('index')">{{nav_content.rule}}</a>
-                            </li>
-                            <li>
-                                <a href="#" id="bac01" class="drop" @click="setKey('baccarat')">{{nav_content.baccarat}}</a>
-                                <ul>
-                                    <li id="baccarat" :class="{'selected':key=='baccarat'}"> <a href="#" @click="setKey('baccarat')">{{nav_content['baccarat-normal']}}</a></li>
-                                    <li id="baccarat-insurance" :class="{'selected':key=='baccarat-insurance'}"> <a href="#" @click="setKey('baccarat-insurance')">{{nav_content['baccarat-insurance']}}</a></li>
-                                    <li id="baccarat-bid" :class="{'selected':key=='baccarat-bid'}"> <a href="#" @click="setKey('baccarat-bid')">{{nav_content['baccarat-bid']}}</a></li>
-                                    <li id="baccarat-color" :class="{'selected':key=='baccarat-color'}"> <a href="#" @click="setKey('baccarat-color')">{{nav_content['baccarat-color']}}</a></li>
+                            <li v-for="(item, index) in nav_content" :id="item.type" :class="{'selected':key==item.type}">
+                                <a href="#" @click="key=item.key" :id="'item'+index" :class="{'drop':item.child.length}">{{item.name}}</a>
+                                <ul v-if="item.child.length">
+                                    <li v-for="(child,index) in item.child" :id="child.type" :class="{'selected':key==child.type}">
+                                        <a href="#" @click="key=child.type">{{child.name}}</a>
+
+                                    </li>
                                 </ul>
                             </li>
-                            <li id="dragonTiger" :class="{'selected':key=='dragonTiger'}">
-                                <a href="#" id="dragon" @click="setKey('dragonTiger')">{{nav_content['dragonTiger']}}</a>
-                            </li>
-                            <li id="sicbo" :class="{'selected':key=='sicbo'}">
-                                <a href="#" id="sic" @click="setKey('sicbo')">{{nav_content['sicbo']}}</a>
-                            </li>
-                            <li id="roulette" :class="{'selected':key=='roulette'}">
-                                <a href="#" id="rou" @click="setKey('roulette')">{{nav_content['roulette']}}</a>
-                            </li>
-                            <li id="bullbull" :class="{'selected':key=='bullbull'}">
-                                <a href="#" id="bull" @click="setKey('bullbull')">{{nav_content['bullbull']}}</a>
-                            </li>
+
                         </ul>
                     </div>
                 </div>

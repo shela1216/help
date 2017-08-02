@@ -1,7 +1,7 @@
 @charset "UTF-8";
 .main .main-right .right-top::after, .index_item::after { clear: both; content: ''; display: block; visibility: hidden; height: 0; }
 
-#bac01, #dragon, #sic, #rou, #bull { padding: 0px 15px 0px 60px; background-repeat: no-repeat; background-size: auto; background-position: 15px center; }
+#item1, #item2, #item3, #item4, #item5 { padding: 0px 15px 0px 60px; background-repeat: no-repeat; background-size: auto; background-position: 15px center; }
 
 .leftUl ul li a, .main .main-right .right-context, select.soflow-color, .mobile_list, .list_box, .index_title { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
@@ -38,17 +38,17 @@ a { text-decoration: none; }
 .leftUl ul li a { text-align: left; position: relative; background-repeat: no-repeat; background-position: right 14px top 8px; background-size: auto 60%; line-height: 55px; width: 100%; padding: 0px 15px; height: 55px; color: #fff; border-bottom: 1px solid #8a6f5c; cursor: pointer; display: block; }
 .leftUl ul li a::before { width: 0; height: 0; border-style: solid; border-width: 12.5px 14px 12.5px 0; border-color: transparent #eeeae2 transparent transparent; position: absolute; right: 0px; top: 50%; margin-top: -12px; content: ""; display: none; }
 
-#bac01 { background-image: url(../images/b01.png); }
-#bac01::after { content: "►"; margin-left: 5px; text-decoration: none; }
-#bac01.drop::after { content: "▼"; }
+#item1 { background-image: url(../images/b01.png); }
+#item1::after { content: "►"; margin-left: 5px; text-decoration: none; }
+#item1.drop::after { content: "▼"; }
 
-#dragon { background-image: url(../images/b02.png); }
+#item2 { background-image: url(../images/b02.png); }
 
-#sic { background-image: url(../images/b03.png); }
+#item3 { background-image: url(../images/b03.png); }
 
-#rou { background-image: url(../images/b04.png); }
+#item4 { background-image: url(../images/b04.png); }
 
-#bull { background-image: url(../images/b05.png); }
+#item5 { background-image: url(../images/b05.png); }
 
 .leftUl ul li#index { background-color: #554132; }
 .leftUl ul li#index a { color: #ffe3a6; height: 60px; line-height: 60px; }

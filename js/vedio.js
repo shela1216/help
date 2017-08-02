@@ -6,70 +6,279 @@
     var ResultSplitChar = "\u00ea\u00ea\u00ea";
     var data = {
         allnav: {
-            menu_cs: {
-                'rule': '游戏规则',
-                'baccarat': '百家乐',
-                'baccarat-normal': '传统百家乐',
-                'baccarat-insurance': '保险百家乐',
-                'baccarat-bid': '共咪百家乐',
-                'baccarat-color': '多彩百家乐',
-                'dragonTiger': '龙虎',
-                'sicbo': '骰宝',
-                'roulette': '轮盘',
-                'bullbull': '牛牛'
-            },
-            menu_tc: {
-                'rule': '遊戲規則',
-                'baccarat': '百家樂',
-                'baccarat-normal': '傳統百家樂',
-                'baccarat-insurance': '保險百家樂',
-                'baccarat-color': '多彩百家樂',
-                'baccarat-bid': '共咪百家樂',
-                'dragonTiger': '龍虎',
-                'sicbo': '骰寶',
-                'roulette': '輪盤',
-                'bullbull': '牛牛'
-            },
-            menu_en: {
-                'rule': 'Game Rules',
-                'baccarat': 'Baccarat',
-                'baccarat-normal': 'Classic Baccarat',
-                'baccarat-insurance': 'Insurance Baccarat',
-                'baccarat-bid': 'MI Baccarat',
-                'baccarat-color': 'Multicolor Baccarat',
-                'dragonTiger': 'DragonTiger',
-                'sicbo': 'Sicbo',
-                'roulette': 'Roulette',
-                'bullbull': 'Bull Bull'
-            },
-            menu_id: {
-                'rule': 'Aturan',
-                'baccarat': 'Baccarat',
-                'baccarat-normal': 'Klasik Baccarat',
-                'baccarat-insurance': 'Baccarat Asuransi',
-                'baccarat-bid': 'MI Baccarat',
-                'baccarat-color': 'beraneka warna Baccarat',
-                'dragonTiger': 'DragonTiger',
-                'sicbo': 'Sicbo',
-                'roulette': 'Roulette',
-                'bullbull': 'Bull Bull'
-            },
-            menu_ms: {
-                'rule': 'Peraturan',
-                'baccarat': 'Baccarat',
-                'baccarat-normal': 'Klasik Baccarat',
-                'baccarat-insurance': 'Baccarat Asuransi',
-                'baccarat-bid': 'MI Baccarat',
-                'baccarat-color': 'beraneka warna Baccarat',
-                'dragonTiger': 'DragonTiger',
-                'sicbo': 'Sicbo',
-                'roulette': 'Roulette',
-                'bullbull': 'Bull Bull'
-            }
+            menu_cs: [{
+                    type: 'index',
+                    name: '游戏规则',
+                    key: 'index',
+                    child: []
+                }, {
+                    type: 'baccarat',
+                    name: '百家乐',
+                    key: 'baccarat-normal',
+                    child: [{
+                        type: 'baccarat-normal',
+                        name: '传统百家乐'
+                    }, {
+                        type: 'baccarat-insurance',
+                        name: '保险百家乐'
+                    }, {
+                        type: 'baccarat-bid',
+                        name: '共咪百家乐'
+                    }, {
+                        type: 'baccarat-color',
+                        name: '多彩百家乐'
+                    }]
+                }, {
+                    type: 'dragonTiger',
+                    name: '龙虎',
+                    key: 'dragonTiger',
+                    child: []
+                },
+                {
+                    type: 'sicbo',
+                    name: '骰宝',
+                    key: 'sicbo',
+                    child: []
+                }, {
+                    type: 'roulette',
+                    name: '轮盘',
+                    key: 'roulette',
+                    child: []
+                }, {
+                    type: 'bullbull',
+                    name: '牛牛',
+                    key: 'bullbull',
+                    child: []
+                }
+            ],
+            menu_tc: [{
+                    type: 'index',
+                    name: '遊戲規則',
+                    key: 'index',
+                    child: []
+                }, {
+                    type: 'baccarat',
+                    name: '百家樂',
+                    key: 'baccarat-normal',
+                    child: [{
+                        type: 'baccarat-normal',
+                        name: '傳統百家樂'
+                    }, {
+                        type: 'baccarat-insurance',
+                        name: '保險百家樂'
+                    }, {
+                        type: 'baccarat-bid',
+                        name: '共咪百家樂'
+                    }, {
+                        type: 'baccarat-color',
+                        name: '多彩百家樂'
+                    }]
+                }, {
+                    type: 'dragonTiger',
+                    name: '龍虎',
+                    key: 'dragonTiger',
+                    child: []
+                },
+                {
+                    type: 'sicbo',
+                    name: '骰寶',
+                    key: 'sicbo',
+                    child: []
+                }, {
+                    type: 'roulette',
+                    name: '輪盤',
+                    key: 'roulette',
+                    child: []
+                }, {
+                    type: 'bullbull',
+                    name: '牛牛',
+                    key: 'bullbull',
+                    child: []
+                }
+            ],
+            menu_en: [{
+                    type: 'index',
+                    name: 'Game Rules',
+                    key: 'index',
+                    child: []
+                }, {
+                    type: 'baccarat',
+                    name: 'Baccarat',
+                    key: 'baccarat-normal',
+                    child: [{
+                        type: 'baccarat-normal',
+                        name: 'Classic Baccarat'
+                    }, {
+                        type: 'baccarat-insurance',
+                        name: 'Insurance Baccarat'
+                    }, {
+                        type: 'baccarat-bid',
+                        name: 'MI Baccarat'
+                    }, {
+                        type: 'baccarat-color',
+                        name: 'Multicolor Baccarat'
+                    }]
+                }, {
+                    type: 'dragonTiger',
+                    name: 'DragonTiger',
+                    key: 'dragonTiger',
+                    child: []
+                },
+                {
+                    type: 'sicbo',
+                    name: 'Sicbo',
+                    key: 'sicbo',
+                    child: []
+                }, {
+                    type: 'roulette',
+                    name: 'Roulette',
+                    key: 'roulette',
+                    child: []
+                }, {
+                    type: 'bullbull',
+                    name: 'Bull Bull',
+                    key: 'bullbull',
+                    child: []
+                }
+            ],
+            menu_id: [{
+                    type: 'index',
+                    name: 'Game Rules',
+                    key: 'index',
+                    child: []
+                }, {
+                    type: 'baccarat',
+                    name: 'Baccarat',
+                    key: 'baccarat-normal',
+                    child: [{
+                        type: 'baccarat-normal',
+                        name: 'Klasik Baccarat'
+                    }, {
+                        type: 'baccarat-insurance',
+                        name: 'Baccarat Asuransi'
+                    }, {
+                        type: 'baccarat-bid',
+                        name: 'MI Baccarat'
+                    }, {
+                        type: 'baccarat-color',
+                        name: 'beraneka warna Baccarat'
+                    }]
+                }, {
+                    type: 'dragonTiger',
+                    name: 'DragonTiger',
+                    key: 'dragonTiger',
+                    child: []
+                },
+                {
+                    type: 'sicbo',
+                    name: 'Sicbo',
+                    key: 'sicbo',
+                    child: []
+                }, {
+                    type: 'roulette',
+                    name: 'Roulette',
+                    key: 'roulette',
+                    child: []
+                }, {
+                    type: 'bullbull',
+                    name: 'Bull Bull',
+                    key: 'bullbull',
+                    child: []
+                }
+            ],
+            menu_id: [{
+                    type: 'index',
+                    name: 'Game Rules',
+                    key: 'index',
+                    child: []
+                }, {
+                    type: 'baccarat',
+                    name: 'Baccarat',
+                    key: 'baccarat-normal',
+                    child: [{
+                        type: 'baccarat-normal',
+                        name: 'Klasik Baccarat'
+                    }, {
+                        type: 'baccarat-insurance',
+                        name: 'Baccarat Asuransi'
+                    }, {
+                        type: 'baccarat-bid',
+                        name: 'MI Baccarat'
+                    }, {
+                        type: 'baccarat-color',
+                        name: 'beraneka warna Baccarat'
+                    }]
+                }, {
+                    type: 'dragonTiger',
+                    name: 'DragonTiger',
+                    key: 'dragonTiger',
+                    child: []
+                },
+                {
+                    type: 'sicbo',
+                    name: 'Sicbo',
+                    key: 'sicbo',
+                    child: []
+                }, {
+                    type: 'roulette',
+                    name: 'Roulette',
+                    key: 'roulette',
+                    child: []
+                }, {
+                    type: 'bullbull',
+                    name: 'Bull Bull',
+                    key: 'bullbull',
+                    child: []
+                }
+            ],
+            menu_ms: [{
+                    type: 'index',
+                    name: 'Peraturan',
+                    key: 'index',
+                    child: []
+                }, {
+                    type: 'baccarat',
+                    name: 'Baccarat',
+                    key: 'baccarat-normal',
+                    child: [{
+                        type: 'baccarat-normal',
+                        name: 'Klasik Baccarat'
+                    }, {
+                        type: 'baccarat-insurance',
+                        name: 'Baccarat Asuransi'
+                    }, {
+                        type: 'baccarat-bid',
+                        name: 'MI Baccarat'
+                    }, {
+                        type: 'baccarat-color',
+                        name: 'beraneka warna Baccarat'
+                    }]
+                }, {
+                    type: 'dragonTiger',
+                    name: 'DragonTiger',
+                    key: 'dragonTiger',
+                    child: []
+                },
+                {
+                    type: 'sicbo',
+                    name: 'Sicbo',
+                    key: 'sicbo',
+                    child: []
+                }, {
+                    type: 'roulette',
+                    name: 'Roulette',
+                    key: 'roulette',
+                    child: []
+                }, {
+                    type: 'bullbull',
+                    name: 'Bull Bull',
+                    key: 'bullbull',
+                    child: []
+                }
+            ]
 
         },
         nav_content: [],
-        content: [],
         ul: [],
         help_all: [],
         selected: '_cn',
@@ -109,6 +318,16 @@
                     }
 
                 }
+            },
+            content: function() {
+                var self = this;
+                var key = self.key;
+                if (self.key == "baccarat-normal") {
+                    key = "baccarat"
+                }
+                var content = self.selected == '_cn' ? self.help_all[self.ul[key]] : self.help_all[self.ul[key + self.selected]];
+                return content
+
             }
         },
         created: function() {
@@ -184,7 +403,6 @@
                         self.nav_content = self.allnav.menu_cs
                         break
                 }
-                this.putContent();
 
             },
             setContent: function() {
@@ -225,19 +443,15 @@
                     }
 
                 }
-                this.putContent();
+
 
             },
             setKey: function(key) {
                 this.key = key;
-                this.putContent();
 
-            },
-            putContent: function() {
-                var self = this;
-                self.content = self.selected == '_cn' ? self.help_all[self.ul[self.key]] : self.help_all[self.ul[self.key + self.selected]];
 
             }
+
         }
 
     });

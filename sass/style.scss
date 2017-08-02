@@ -167,7 +167,7 @@ a {
     }
 }
 
-#bac01 {
+#item1 {
     @extend %list_btn;
     background-image: url(../images/b01.png);
     &::after {
@@ -180,22 +180,22 @@ a {
     }
 }
 
-#dragon {
+#item2 {
     @extend %list_btn;
     background-image: url(../images/b02.png);
 }
 
-#sic {
+#item3 {
     @extend %list_btn;
     background-image: url(../images/b03.png);
 }
 
-#rou {
+#item4 {
     @extend %list_btn;
     background-image: url(../images/b04.png);
 }
 
-#bull {
+#item5 {
     @extend %list_btn;
     background-image: url(../images/b05.png);
 }
